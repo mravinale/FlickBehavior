@@ -1,0 +1,1 @@
+More Information: Flick Behavior – Using a SL Listbox control as you do on WP7
