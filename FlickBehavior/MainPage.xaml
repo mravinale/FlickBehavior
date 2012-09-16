@@ -1,0 +1,36 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:System="clr-namespace:System;assembly=mscorlib" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:local="clr-namespace:SilverlightApplicationFlickBehavior" xmlns:ee="http://schemas.microsoft.com/expression/2010/effects" x:Name="userControl" x:Class="SilverlightApplicationFlickBehavior.MainPage"
+	mc:Ignorable="d">
+	
+	<UserControl.Resources>
+		<DataTemplate x:Key="ItemTemplate">
+			<StackPanel Orientation="Horizontal">
+				<Image Source="{Binding Property1}" HorizontalAlignment="Left" Height="100" Width="100"/>
+				<StackPanel Height="100">
+					<TextBlock Text="{Binding Property2}" d:LayoutOverrides="Height" Margin="0,3"/>	
+					<TextBlock Text="{Binding Property3}" d:LayoutOverrides="Height" Margin="0,3"/>
+					<TextBlock  d:LayoutOverrides="Height" Text="{Binding Property4}" Margin="0,3"/>
+					<HyperlinkButton Content="{Binding Property5}" Margin="0,3"/>				
+				</StackPanel>				
+			</StackPanel>
+		</DataTemplate>
+		
+	</UserControl.Resources>
+
+
+	<Grid x:Name="LayoutRoot" Background="White" DataContext="{Binding Source={StaticResource SampleDataSource}}">
+		<ListBox Margin="0" ItemTemplate="{StaticResource ItemTemplate}" ItemsSource="{Binding Collection}" Width="580" Height="462" HorizontalAlignment="Center" VerticalAlignment="Center" >
+			<i:Interaction.Behaviors>
+				<local:FlickBehavior/>
+			</i:Interaction.Behaviors>
+			<ListBox.Effect>
+				<DropShadowEffect Opacity="0.25" BlurRadius="19" ShadowDepth="17"/>
+			</ListBox.Effect>
+		</ListBox>
+
+	</Grid>
+</UserControl>
